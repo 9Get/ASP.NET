@@ -17,11 +17,11 @@ namespace LR3
 
 			app.MapGet("/daytime", async context =>
 			{
-				var dayTimeService = app.Services.GetService<DayTimeServise>();
+				DayTimeServise dayTimeService = new DayTimeServise();
 
 				DateTime dateTime = DateTime.Now;
 
-				await context.Response.WriteAsync($"Current time of the day: {dayTimeService?.GetDayTime(dateTime)}\n");
+				await context.Response.WriteAsync($"Current time of the day: {dayTimeService.GetDayTime(dateTime)}\n");
 			});
 
 			app.MapGet("/", async context =>
