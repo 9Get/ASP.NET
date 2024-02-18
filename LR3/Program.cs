@@ -11,17 +11,17 @@ namespace LR3
 			var builder = WebApplication.CreateBuilder(args);
 
 			builder.Services.AddTransient<CalcService>();
-			builder.Services.AddTransient<IDayTimeService, DayTimeServise>();
+			builder.Services.AddTransient<IDayTimeService, DayTimeServiñe>();
 
 			var app = builder.Build();
 
 			app.MapGet("/daytime", async context =>
 			{
-				DayTimeServise dayTimeService = new DayTimeServise();
+				var dayTimeService = app.Services.GetService<IDayTimeService>();
 
 				DateTime dateTime = DateTime.Now;
 
-				await context.Response.WriteAsync($"Current time of the day: {dayTimeService.GetDayTime(dateTime)}\n");
+				await context.Response.WriteAsync($"Current time of the day: {dayTimeService?.GetDayTime(dateTime)}\n");
 			});
 
 			app.MapGet("/", async context =>

@@ -2,7 +2,7 @@
 
 namespace LR3.controllers
 {
-	public class DayTimeServise : IDayTimeService
+	public class DayTimeServiсe : IDayTimeService
 	{
 		public string GetDayTime(DateTime dateTime)
 		{ 
