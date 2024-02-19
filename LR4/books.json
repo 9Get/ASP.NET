@@ -1,0 +1,22 @@
+{
+  "books": [
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "genre": "Dystopian Fiction",
+      "yearPublished": 1949
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "genre": "Fiction",
+      "yearPublished": 1960
+    },
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "genre": "Fiction",
+      "yearPublished": 1925
+    }
+  ]
+}
