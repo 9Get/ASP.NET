@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 namespace LR5
 {
@@ -14,29 +15,37 @@ namespace LR5
 			{
 				context.Response.ContentType = "text/html; charset=utf-8";
 
-				if (context.Request.Path == "/check-cookies")
+				try
 				{
-					var form = context.Request.Form;
-					var name = form["name"];
-					var cookiesLifespan = form["cookies-lifespan"];
-
-					if (context.Request.Cookies.ContainsKey("name"))
+					if (context.Request.Path == "/check-cookies")
 					{
-						await context.Response.WriteAsync($"Hello {context.Request.Cookies["name"]}!");
+						var form = context.Request.Form;
+						var name = form["name"];
+						var cookiesLifespan = form["cookies-lifespan"];
+
+						if (context.Request.Cookies.ContainsKey("name"))
+						{
+							await context.Response.WriteAsync($"Hello {context.Request.Cookies["name"]}!");
+						}
+						else
+						{
+							context.Response.Cookies.Append("name", name, new CookieOptions
+							{
+								Expires = Convert.ToDateTime(cookiesLifespan)
+							});
+
+							await context.Response.WriteAsync("Hello World!");
+						}
 					}
 					else
 					{
-						context.Response.Cookies.Append("name", name, new CookieOptions
-						{
-							Expires = Convert.ToDateTime(cookiesLifespan)
-						});
-
-						await context.Response.WriteAsync("Hello World!");
+						await context.Response.SendFileAsync("html/index.html");
 					}
 				}
-				else
+				catch (InvalidOperationException ex)
 				{
-					await context.Response.SendFileAsync("html/index.html");
+					var path = context.Request.Path;
+					app.Logger.LogError($"LogError {path} | {ex.Message} | {ex.Data} | {ex.Source}");
 				}
 			});
 
