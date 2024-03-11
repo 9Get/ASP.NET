@@ -1,0 +1,15 @@
+﻿@using LR6.Models
+@model Product[]
+
+<h2>Your ordered products:</h2>
+<table>
+    <tr>
+        <th>Name</th>
+    </tr>
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.Name</td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,13 @@
+﻿@{
+    var quantity = ViewBag.Quantity;
+}
+
+@for (var i = 0; i < quantity; i++)
+{
+    <form asp-controller="Pizza" asp-action="Result" method="post">
+        <label>Enter quantity for product @i:</label>
+        <input type="number" name="products[@i].Quantity" />
+        <br />
+        <button type="submit">Confirm</button>
+    </form>
+}

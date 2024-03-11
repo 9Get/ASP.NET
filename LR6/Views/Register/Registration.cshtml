@@ -1,0 +1,12 @@
+﻿@using LR6.Models
+@model User
+
+<form asp-controller="Order" asp-action="ConfirmOrder" method="post">
+    <label>Name:</label>
+    <input type="text" asp-for="Name" />
+    <br />
+    <label>Age:</label>
+    <input type="number" asp-for="Age" />
+    <br />
+    <button type="submit">Register</button>
+</form>
