@@ -1,0 +1,35 @@
+﻿@page
+@model LR10.Views.Registration.RegistrationModel
+
+<form method="post">
+    <div>
+        <p>
+            <label for="initials">Initials</label><br />
+            <input type="text" id="initials" name="initials" />
+        </p>
+        <p>
+            <label for="email">Email</label><br />
+            <input type="email" id="email" name="email" />
+        </p>
+        <p>
+            <label for="consultationDate">Consultation date</label><br />
+            <input type="datetime-local" id="consultationDate" name="consultationDate" />
+        </p>
+        <p>
+            <label for="product">Select a product for consultation:</label>
+
+            <select id="product" name="product">
+                <option value="JavaScript">JavaScript</option>
+                <option value="C#">C#</option>
+                <option value="Java">Java</option>
+                <option value="Python">Python</option>
+                <option value="Основи">Основи</option>
+            </select>
+
+            <br><br>
+        </p>
+        <p>
+            <input type="submit" value="Send" />
+        </p>
+    </div>
+</form>
