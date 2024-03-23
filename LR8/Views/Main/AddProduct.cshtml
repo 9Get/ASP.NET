@@ -1,0 +1,30 @@
+﻿@page
+@model LR8.Views.Main.AddProductModel
+@{
+    string str = "Not added";
+    bool statusAvilable = TempData.ContainsKey("Status");
+    if (statusAvilable)
+    {
+        bool? status = Convert.ToBoolean(TempData["Status"]);
+        if (status == true)
+        {
+            str = "Added";
+        }
+    }
+}
+<body>
+    @if (statusAvilable)
+    {
+        <p>@str</p>
+    }
+    <form action="AddProduct" method="post">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="price">Price:</label><br>
+        <input type="number" id="price" name="price" step="0.01"><br><br>
+
+        <input type="submit" value="Add">
+    </form>
+    <a href="/ProductView">Products list</a>
+</body>

@@ -1,0 +1,55 @@
+﻿@page
+@model LR8.Views.Main.ProductViewModel
+@using LR8.Models
+@{
+    List<Product>? products = TempData["Products"] as List<Product>;
+    if (products is null || TempData["mode"] is null)
+    {
+        throw new Exception();
+    }
+
+    string mode = TempData["mode"].ToString();
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 2px solid black;
+    }
+</style>
+<body>
+    <form action="ProductView" method="post">
+        <label for="mode">Choose view mode:</label>
+        <select id="mode" name="mode">
+            <option value="list">List</option>
+            <option value="grid">Table</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Confirm">
+    </form>
+    @if (mode == "list")
+    {
+        foreach (Product product in products)
+        {
+            <p>@product.Id.@product.Name - @product.Price$ (@product.CreatedDateTime)</p>
+        }
+    }
+    @if (mode == "grid")
+    {
+        <table>
+            @foreach (Product product in products)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.Price</td>
+                    <td>@product.CreatedDateTime</td>
+                </tr>
+            }
+        </table>
+    }
+    <a href="/AddProduct">Add product</a>
+</body>
