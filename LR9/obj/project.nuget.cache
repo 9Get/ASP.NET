@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "PQm7G0aTzjq3Xqsv8HH3qmjRrnxYFmSaQ50tLb8lgYE0O+bjtpm3SCe1KoWjJcWiAy+urQEpF0XxTko65D5xxg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Stas Bezoshchuk\\source\\repos\\LR9\\LR9\\LR9.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Stas Bezoshchuk\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
